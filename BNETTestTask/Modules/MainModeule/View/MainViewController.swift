@@ -12,13 +12,13 @@ final class MainViewController: UIViewController {
     var presenter: MainPresenterProtocol?
     
     
-    // MARK: - Private propertyes
+    // MARK: - Private properties
     
-    private let cardCellIdentifire = "cardCellIdentifire"
+    private let cardCellIdentifier = "cardCellIdentifier"
     private var drugsData: [DrugsModel] = []
-    private var filtredData: [DrugsModel] = []
+    private var filteredData: [DrugsModel] = []
     private var isNeedUpdate = true
-
+    
     
     // MARK: - UI elements
     
@@ -59,7 +59,7 @@ final class MainViewController: UIViewController {
         mainCollectionView.backgroundColor = Colors.globalWhite
         mainCollectionView.dataSource = self
         mainCollectionView.delegate = self
-        mainCollectionView.register(CardCollectionCell.self, forCellWithReuseIdentifier: cardCellIdentifire)
+        mainCollectionView.register(CardCollectionCell.self, forCellWithReuseIdentifier: cardCellIdentifier)
     }
     
     private func settingsSearchBar() {
@@ -91,9 +91,9 @@ extension MainViewController: MainViewControllerProtocol {
     func stopUpdating() {
         isNeedUpdate = false
     }
-    func showDrgsList(list: [DrugsModel]) {
+    func showDrugsList(list: [DrugsModel]) {
         drugsData.append(contentsOf: list)
-        filtredData = drugsData
+        filteredData = drugsData
         DispatchQueue.main.async {
             self.mainCollectionView.reloadData()
         }
@@ -103,28 +103,32 @@ extension MainViewController: MainViewControllerProtocol {
 
 // MARK: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout
 
-extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
+extension MainViewController: UICollectionViewDataSource, 
+                                UICollectionViewDelegate,
+                              UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        filtredData.count
+        filteredData.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        navigationController?.pushViewController(ElementViewBuilder.createElementCardModule(element: filtredData[indexPath.row]), animated: true)
+    func collectionView(_ collectionView: UICollectionView, 
+                        didSelectItemAt indexPath: IndexPath) {
+        navigationController?.pushViewController(ElementViewBuilder.createElementCardModule(element: filteredData[indexPath.row]), 
+                                                 animated: true)
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cardCellIdentifire,
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cardCellIdentifier,
                                                       for: indexPath) as? CardCollectionCell
-        cell?.configure(model: filtredData[indexPath.row])
+        cell?.configure(model: filteredData[indexPath.row])
         return cell ?? UICollectionViewCell()
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        if indexPath.row == filtredData.count - 6 && isNeedUpdate {
-            presenter?.getData(offset: filtredData.count)
+        if indexPath.row == filteredData.count - 6 && isNeedUpdate {
+            presenter?.getData(offset: filteredData.count)
         }
     }
     
@@ -146,21 +150,21 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
 
 extension MainViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        filtredData = []
+        filteredData = []
         if searchText == "" {
-            filtredData = drugsData
+            filteredData = drugsData
             self.mainCollectionView.reloadData()
         }
         for word in drugsData {
             if word.name!.lowercased().contains(searchText.lowercased()) {
-                filtredData.append(word)
+                filteredData.append(word)
             }
         }
         self.mainCollectionView.reloadData()
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        filtredData = drugsData
+        filteredData = drugsData
         mainCollectionView.reloadData()
     }
 }

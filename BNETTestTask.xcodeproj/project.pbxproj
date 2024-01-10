@@ -33,7 +33,7 @@
 		32C14F6429FDA23A007AF486 /* ElementCardVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElementCardVC.swift; sourceTree = "<group>"; };
 		32C14F6629FEECBA007AF486 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		32C14F6829FFEA00007AF486 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		32C14F6A29FFF6D7007AF486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		32C14F6A29FFF6D7007AF486 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		32C14F752A019410007AF486 /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		32C14F792A019505007AF486 /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
 		32C14F7B2A01954D007AF486 /* MainViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewBuilder.swift; sourceTree = "<group>"; };
@@ -66,6 +66,7 @@
 		32160DD82A0405CE00E5DA6C /* Resoureses */ = {
 			isa = PBXGroup;
 			children = (
+				32EE7EBF29FAF5B800A00A62 /* LaunchScreen.storyboard */,
 				32EE7EBD29FAF5B800A00A62 /* Assets.xcassets */,
 				32160DD92A0405DD00E5DA6C /* Colors */,
 			);
@@ -146,6 +147,7 @@
 			isa = PBXGroup;
 			children = (
 				32EE7EB729FAF5B600A00A62 /* AppDelegate.swift */,
+				32C14F6A29FFF6D7007AF486 /* Info.plist */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -202,14 +204,12 @@
 		32EE7EB629FAF5B600A00A62 /* BNETTestTask */ = {
 			isa = PBXGroup;
 			children = (
-				32C14F772A019471007AF486 /* Services */,
-				32C14F732A0193D7007AF486 /* Helpers */,
-				32160DD82A0405CE00E5DA6C /* Resoureses */,
-				32C14F6D2A0192F2007AF486 /* Model */,
 				32C14F722A0193A7007AF486 /* Core */,
+				32160DD82A0405CE00E5DA6C /* Resoureses */,
+				32C14F732A0193D7007AF486 /* Helpers */,
+				32C14F772A019471007AF486 /* Services */,
+				32C14F6D2A0192F2007AF486 /* Model */,
 				32C14F702A019378007AF486 /* Modules */,
-				32EE7EBF29FAF5B800A00A62 /* LaunchScreen.storyboard */,
-				32C14F6A29FFF6D7007AF486 /* Info.plist */,
 			);
 			path = BNETTestTask;
 			sourceTree = "<group>";
@@ -437,7 +437,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YV72SAKGKB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BNETTestTask/Info.plist;
+				INFOPLIST_FILE = BNETTestTask/Core/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -465,7 +465,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YV72SAKGKB;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BNETTestTask/Info.plist;
+				INFOPLIST_FILE = BNETTestTask/Core/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;

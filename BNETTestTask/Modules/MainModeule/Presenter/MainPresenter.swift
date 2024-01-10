@@ -8,7 +8,7 @@
 import Foundation
 
 protocol MainViewControllerProtocol: AnyObject {
-    func showDrgsList(list: [DrugsModel])
+    func showDrugsList(list: [DrugsModel])
     func stopUpdating()
 }
 
@@ -40,7 +40,7 @@ extension MainPresenter: MainPresenterProtocol {
     func getData(offset: Int) {
         service.getDrugsList(offset: offset, limit: 20, completion: {[weak self] response in
             if response.last?.id != self?.lastId {
-                self?.view?.showDrgsList(list: response)
+                self?.view?.showDrugsList(list: response)
             } else {
                 self?.view?.stopUpdating()
             }

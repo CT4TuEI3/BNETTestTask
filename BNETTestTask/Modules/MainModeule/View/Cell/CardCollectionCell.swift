@@ -13,7 +13,7 @@ final class CardCollectionCell: UICollectionViewCell {
     
     private let cellUIImageView = UIImageView()
     private let largeLabel = UILabel()
-    private let discriptionLabel = UILabel()
+    private let descriptionLabel = UILabel()
     private let uiContainer = UIStackView()
     
     
@@ -38,7 +38,7 @@ final class CardCollectionCell: UICollectionViewCell {
     
     func configure(model: DrugsModel) {
         self.largeLabel.text = model.name
-        self.discriptionLabel.text = model.description
+        self.descriptionLabel.text = model.description
         guard let stringImage = model.image else { return }
         let url = "http://shans.d2.i-partner.ru\(stringImage)"
         let encodedURL = url.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
@@ -54,7 +54,7 @@ final class CardCollectionCell: UICollectionViewCell {
         backgroundColor = Colors.globalWhite
         addSubview(cellUIImageView)
         addSubview(largeLabel)
-        addSubview(discriptionLabel)
+        addSubview(descriptionLabel)
         addShadow()
         settingsLabels()
         setConstraints()
@@ -70,15 +70,15 @@ final class CardCollectionCell: UICollectionViewCell {
         largeLabel.numberOfLines = 0
         largeLabel.setContentHuggingPriority(.required, for: .vertical)
         
-        discriptionLabel.textColor = Colors.globalLightGray
-        discriptionLabel.font = UIFont(name: "SFProDisplay-Medium", size: 12)
-        discriptionLabel.numberOfLines = 6
+        descriptionLabel.textColor = Colors.globalLightGray
+        descriptionLabel.font = UIFont(name: "SFProDisplay-Medium", size: 12)
+        descriptionLabel.numberOfLines = 6
     }
     
     private func setConstraints() {
         cellUIImageView.translatesAutoresizingMaskIntoConstraints = false
         largeLabel.translatesAutoresizingMaskIntoConstraints = false
-        discriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             cellUIImageView.heightAnchor.constraint(equalToConstant: 82),
             cellUIImageView.topAnchor.constraint(equalTo: topAnchor, constant: 12),
@@ -89,9 +89,9 @@ final class CardCollectionCell: UICollectionViewCell {
             largeLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             largeLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
 
-            discriptionLabel.topAnchor.constraint(equalTo: largeLabel.bottomAnchor, constant: 6),
-            discriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-            discriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+            descriptionLabel.topAnchor.constraint(equalTo: largeLabel.bottomAnchor, constant: 6),
+            descriptionLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+            descriptionLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
         ])
     }
 }

@@ -35,7 +35,7 @@ struct CardOneElementModel: Decodable {
     let id: Int?
     let image: String?
     let name: String?
-    let discription: String?
+    let description: String?
     let documentation: String?
-    let catigories: Categories?
+    let categories: Categories?
 }
